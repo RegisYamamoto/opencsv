@@ -17,8 +17,10 @@ public class OpenCSVReadAndParseToObject {
 	public static void main(String[] args) {
 		
 		try {
+			// Só funciona com dados separados por ",". Se for separados por ";" não funciona
 			Reader reader = Files.newBufferedReader(Paths.get(SAMPLE_CSV_FILE_PATH));
 			
+			@SuppressWarnings("unchecked")
 			CsvToBean<CSVUser> csvToBean = new CsvToBeanBuilder(reader)
                     .withType(CSVUser.class)
                     .withIgnoreLeadingWhiteSpace(true)
